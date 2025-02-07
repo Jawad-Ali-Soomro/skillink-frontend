@@ -5,6 +5,9 @@ import { CgArrowTopRight, CgMenuGridO } from "react-icons/cg";
 import { GiHummingbird } from "react-icons/gi";
 import Login from "./Login";
 import { BiLogOut } from "react-icons/bi";
+import { CiSettings } from "react-icons/ci";
+import { IoSettingsSharp } from "react-icons/io5";
+import { BsTools } from "react-icons/bs";
 
 const Header = ({ isLightMode, isLoggedIn }) => {
   const tab = window.location.pathname;
@@ -109,7 +112,6 @@ const Header = ({ isLightMode, isLoggedIn }) => {
               <div className="avatar flex">
                 <img src="https://avatars.githubusercontent.com/u/142707756?v=4" />
               </div>
-              <div className="details flex col"></div>
             </div>
           </div>
         </div>
