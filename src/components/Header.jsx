@@ -4,10 +4,20 @@ import "../styles/header.scss";
 import { CgArrowTopRight, CgMenuGridO } from "react-icons/cg";
 import { GiHummingbird } from "react-icons/gi";
 import Login from "./Login";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogOut, BiMessageSquareDetail } from "react-icons/bi";
 import { CiSettings } from "react-icons/ci";
-import { IoSettingsSharp } from "react-icons/io5";
+import {
+  IoLogOutOutline,
+  IoSettings,
+  IoSettingsOutline,
+  IoSettingsSharp,
+} from "react-icons/io5";
 import { BsTools } from "react-icons/bs";
+import { RiDashboard2Line, RiProfileLine } from "react-icons/ri";
+import { RxDashboard } from "react-icons/rx";
+import { MdExplore, MdOutlineExplore } from "react-icons/md";
+import { GoGitPullRequest } from "react-icons/go";
+import { FiSettings } from "react-icons/fi";
 
 const Header = ({ isLightMode, isLoggedIn }) => {
   const tab = window.location.pathname;
@@ -104,7 +114,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
             }}
           >
             <div
-              className="top-profile flex col"
+              className="top-profile flex"
               style={{
                 background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
               }}
@@ -112,6 +122,71 @@ const Header = ({ isLightMode, isLoggedIn }) => {
               <div className="avatar flex">
                 <img src="https://avatars.githubusercontent.com/u/142707756?v=4" />
               </div>
+              <div className="right-avatar flex">
+                <div className="side flex">
+                  <IoSettingsOutline />
+                </div>
+                <div
+                  className="side flex"
+                  onClick={() =>
+                    window.localStorage.clear() + window.location.reload()
+                  }
+                >
+                  <IoLogOutOutline />
+                </div>
+              </div>
+            </div>
+            <div className="sidebar-menu flex col">
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>Dashboard</span>
+                <RxDashboard className="icon" />
+              </button>
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>explore skills</span>
+                <MdOutlineExplore className="icon" />
+              </button>
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>my skills</span>
+                <RiProfileLine className="icon" />
+              </button>
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>Requests</span>
+                <GoGitPullRequest className="icon" />
+              </button>
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>messages</span>
+                <BiMessageSquareDetail className="icon" />
+              </button>
             </div>
           </div>
         </div>

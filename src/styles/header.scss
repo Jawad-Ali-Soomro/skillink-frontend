@@ -117,10 +117,10 @@
     position: fixed;
     left: 0;
     top: 0;
-    backdrop-filter: blur(2px);
+    // backdrop-filter: blur(2px);
     z-index: 10000000;
     .main-menu-container {
-      width: 400px;
+      width: 350px;
       height: 100vh;
       position: absolute;
       left: 0;
@@ -130,15 +130,17 @@
       justify-content: start;
       padding-top: 10vh;
       .top-profile {
-        width: 90%;
+        width: 80%;
+        padding-left: 5%;
+        padding-right: 5%;
         height: 150px;
-        padding-top: 50px;
-        background: #80808090;
         border-radius: 10px;
-        justify-content: start;
         overflow: hidden;
+        position: relative;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: center;
         .avatar {
-          width: 100%;
           position: relative;
           img {
             width: 100px;
@@ -147,13 +149,51 @@
             z-index: 1;
           }
         }
-        .avatar::after {
-          content: "";
-          width: 100%;
-          height: 100px;
-          background: #222;
-          position: absolute;
-          top: -50px;
+        .right-avatar {
+          gap: 10px;
+          .side {
+            width: 50px;
+            height: 50px;
+            background: white;
+            z-index: 10;
+            border-radius: 10px;
+            color: black;
+            font-size: 1.3rem;
+          }
+          .side:last-child {
+            background: white;
+            color: black;
+          }
+        }
+      }
+      .top-profile::after {
+        content: "";
+        width: calc(100% + 50px);
+        height: 125px;
+        // background: #222;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+      }
+      .sidebar-menu {
+        width: 100%;
+        margin-top: 30px;
+        gap: 10px;
+        button {
+          width: 90%;
+          padding-left: 5%;
+          padding-right: 5%;
+          cursor: pointer;
+          height: 50px;
+          border: none;
+          background: #eee;
+          border: none;
+          border-radius: 10px;
+          text-transform: uppercase;
+          font-weight: 500;
+          .icon {
+            font-size: 1.2rem;
+          }
         }
       }
     }

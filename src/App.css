@@ -58,3 +58,9 @@
     transition: 0.3s;
   }
 }
+
+button,
+.icon,
+.side {
+  cursor: pointer !important;
+}
