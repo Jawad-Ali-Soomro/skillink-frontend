@@ -14,12 +14,12 @@
       display: flex;
       font-weight: 900;
       text-align: center;
-      line-height: 120px;
       font-family: lato;
       span {
-        font-size: 8rem;
-        color: transparent;
-        -webkit-text-stroke: 2px #80808090;
+        padding: 0px 120px;
+        background: #eee;
+        border-radius: 10px;
+        color: rgba($color: #000000, $alpha: 01);
       }
     }
     h2 {

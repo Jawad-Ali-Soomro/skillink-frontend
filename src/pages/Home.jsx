@@ -10,7 +10,9 @@ const Home = () => {
           <div className="bottom-animate"></div>
           <div className="left-animate"></div>
           <div className="right-animate"></div>
-          <h1>SKILLINK</h1>
+          <h1>
+            <span>SKILL</span>INK
+          </h1>
         </div>
         <div className="bottom-wrapper flex">
           <div className="wrapper flex">
