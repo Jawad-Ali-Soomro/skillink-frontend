@@ -121,34 +121,47 @@
     z-index: 10000000;
     .main-menu-container {
       width: 350px;
-      height: 100vh;
+      height: 98vh;
       position: absolute;
       left: 0;
       transition: 0.5s;
       animation: animateSide 300ms linear;
       box-shadow: 0 0 5px #80808090;
       justify-content: start;
-      padding-top: 10vh;
+      padding-top: 2vh;
       .top-profile {
         width: 80%;
         padding-left: 5%;
         padding-right: 5%;
-        height: 150px;
+        height: 180px;
         border-radius: 10px;
         overflow: hidden;
         position: relative;
-        gap: 10px;
-        justify-content: space-between;
         align-items: center;
         .avatar {
           position: relative;
           img {
-            width: 100px;
-            height: 100px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
+            background: white;
             z-index: 1;
           }
+          .user-info {
+            h3 {
+              font-weight: 400;
+              font-size: 0.9rem;
+              text-transform: uppercase;
+              margin-top: 10px;
+            }
+            h4 {
+              font-weight: 600;
+              font-size: 0.8rem;
+              text-transform: uppercase;
+            }
+          }
         }
+
         .right-avatar {
           gap: 10px;
           .side {
@@ -177,7 +190,6 @@
       }
       .sidebar-menu {
         width: 100%;
-        margin-top: 30px;
         gap: 10px;
         button {
           width: 90%;
@@ -196,6 +208,17 @@
           }
         }
       }
+      .btn-logout {
+        width: 90%;
+        height: 50px;
+        background: red;
+        border-radius: 10px;
+        color: white;
+        justify-self: flex-end;
+        position: absolute;
+        bottom: 20px;
+        font-weight: 600;
+      }
     }
     @keyframes animateSide {
       from {
@@ -206,4 +229,12 @@
       }
     }
   }
+}
+
+.line {
+  width: 50%;
+  background: #80808090;
+  height: 1px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

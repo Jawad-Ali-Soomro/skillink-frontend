@@ -119,23 +119,15 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
               }}
             >
-              <div className="avatar flex">
+              <div className="avatar flex col">
                 <img src="https://avatars.githubusercontent.com/u/142707756?v=4" />
-              </div>
-              <div className="right-avatar flex">
-                <div className="side flex">
-                  <IoSettingsOutline />
-                </div>
-                <div
-                  className="side flex"
-                  onClick={() =>
-                    window.localStorage.clear() + window.location.reload()
-                  }
-                >
-                  <IoLogOutOutline />
+                <div className="flex col user-info">
+                  <h3>Jawad</h3>
+                  <h4>Web Developer</h4>
                 </div>
               </div>
             </div>
+            <div className="line"></div>
             <div className="sidebar-menu flex col">
               <button
                 className="sidebar-button flex bw"
@@ -147,6 +139,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 <span>Dashboard</span>
                 <RxDashboard className="icon" />
               </button>
+              <div className="line"></div>
               <button
                 className="sidebar-button flex bw"
                 style={{
@@ -167,6 +160,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 <span>my skills</span>
                 <RiProfileLine className="icon" />
               </button>
+              <div className="line"></div>
               <button
                 className="sidebar-button flex bw"
                 style={{
@@ -187,6 +181,25 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 <span>messages</span>
                 <BiMessageSquareDetail className="icon" />
               </button>
+              <div className="line"></div>
+              <button
+                className="sidebar-button flex bw"
+                style={{
+                  background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
+                  color: "inherit",
+                }}
+              >
+                <span>manage profile</span>
+                <IoSettingsOutline className="icon" />
+              </button>
+            </div>
+            <div
+              className="btn-logout flex"
+              onClick={() =>
+                window.localStorage.clear() + window.location.reload()
+              }
+            >
+              LOGOUT
             </div>
           </div>
         </div>
