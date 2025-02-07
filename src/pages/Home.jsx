@@ -11,7 +11,7 @@ const Home = () => {
           <div className="left-animate"></div>
           <div className="right-animate"></div>
           <h1>
-            SKILL<span>.INK</span>
+            SKILL<span>•</span>INK
           </h1>
         </div>
         <div className="bottom-wrapper flex">

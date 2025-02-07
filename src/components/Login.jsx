@@ -43,7 +43,7 @@ const Login = ({ onClose, isLightMode }) => {
       let response;
 
       if (isRegistering) {
-        if (!formInputs) {
+        if (!formInputs.username || !formInputs.password || !formInputs.email) {
           return toast.error("Please fill all the fields!");
         }
         response = await axios.post("http://localhost:8080/route/user/new", {
@@ -72,13 +72,13 @@ const Login = ({ onClose, isLightMode }) => {
         if (response.status === 200) {
           localStorage.setItem("authToken", response.data.token);
           localStorage.setItem("authUserId", response.data.userId);
-          toast.success("Welcome Back");
+          toast.success("Welcome Back") + window.location.reload();
         } else if (response.status === 401) {
           toast.error("Invalid email address or password");
         }
       }
     } catch (error) {
-      toast.error(error.response?.data?.msg || "Something went wrong");
+      toast.error(error.response?.data?.message || "Something went wrong");
     } finally {
       setIsLoading(false);
     }

@@ -5,10 +5,12 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import Home from "./pages/Home";
 import {} from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Welcome from "./pages/Welcome";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(true);
   useEffect(() => {
     if (isLightMode) {
       document.body.classList.add("light-theme");
@@ -23,6 +25,7 @@ function App() {
     <>
       <Toaster
         toastOptions={{
+          duration: "200",
           position: "top-right",
         }}
         containerStyle={{
@@ -53,8 +56,12 @@ function App() {
           <FiMoon />
         </div>
       </div>
-      <Header isLoggedIn={isLoggedIn} isLightMode={isLightMode} />
-      <Home />
+      <BrowserRouter>
+        <Header isLightMode={isLightMode} isLoggedIn={isLoggedIn} />
+        <Routes>
+          <Route path="/" element={isLoggedIn ? <Welcome /> : <Home />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

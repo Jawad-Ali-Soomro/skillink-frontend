@@ -45,7 +45,6 @@
   }
 
   .right-header-wrapper {
-    gap: 20px;
     .search-box {
       width: 350px;
       height: 40px;
@@ -76,10 +75,9 @@
     }
     .btns {
       gap: 5px;
+      margin-left: 10px;
       button {
         width: 150px;
-        padding-left: 20px;
-        padding-right: 5px;
         height: 48px;
         border-radius: 10px;
         border: none;
@@ -95,6 +93,55 @@
           border: 1px solid rgba($color: #80808090, $alpha: 1);
           border-radius: 10px;
         }
+      }
+    }
+    .btn-menu {
+      gap: 5px;
+      margin-left: 20px;
+      cursor: pointer;
+      .bars {
+        width: 30px;
+        height: 2px;
+        background: #80808090;
+        transition: 0.3s;
+      }
+      .bars:nth-child(2) {
+        width: 15px;
+        margin-left: 5px;
+      }
+    }
+  }
+  .main-menu {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(2px);
+    z-index: 10000000;
+    .main-menu-container {
+      width: 400px;
+      height: 100vh;
+      position: absolute;
+      left: 0;
+      transition: 0.5s;
+      animation: animateSide 300ms linear;
+      box-shadow: 0 0 5px #80808090;
+      justify-content: start;
+      padding-top: 10vh;
+      .top-profile {
+        width: 90%;
+        height: 200px;
+        background: #80808090;
+        border-radius: 10px;
+      }
+    }
+    @keyframes animateSide {
+      from {
+        left: -400px;
+      }
+      to {
+        left: 0;
       }
     }
   }
