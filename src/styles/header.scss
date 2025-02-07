@@ -1,0 +1,101 @@
+.header-container {
+  width: calc(100% - 100px);
+  padding: 30px 50px;
+  border-bottom: 1px dotted #80808090;
+  align-items: end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  .left-header-wrapper {
+    gap: 50px;
+    .logo {
+      margin-left: 40px;
+      position: relative;
+      .circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 20px;
+        left: -40px;
+        z-index: 1;
+        .icon {
+          position: absolute;
+          font-size: 4rem;
+        }
+      }
+      h1 {
+        font-weight: 900;
+        span {
+          font-size: 0.7rem;
+        }
+      }
+    }
+    .navs {
+      ul {
+        gap: 20px;
+        li {
+          text-transform: uppercase;
+          list-style: none;
+          font-size: 1rem;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .right-header-wrapper {
+    gap: 20px;
+    .search-box {
+      width: 350px;
+      height: 40px;
+      padding: 5px;
+      position: relative;
+      border-radius: 10px;
+      input {
+        width: calc(100% - 10px);
+        height: 100%;
+        padding-left: 10px;
+        background: transparent;
+        outline: none;
+        border: none;
+        color: inherit;
+        font-size: 1rem;
+      }
+      .keys {
+        gap: 2px;
+        margin-right: 10px;
+        .key {
+          padding: 5px 10px;
+          font-size: 0.6rem;
+          background: #8080804d;
+          border-radius: 5px;
+          font-weight: 600;
+        }
+      }
+    }
+    .btns {
+      gap: 5px;
+      button {
+        width: 150px;
+        padding-left: 20px;
+        padding-right: 5px;
+        height: 48px;
+        border-radius: 10px;
+        border: none;
+        text-transform: uppercase;
+        font-weight: 600;
+        background: #eee;
+        color: black;
+        font-weight: 700;
+        cursor: pointer;
+        span {
+          width: 38px;
+          height: 38px;
+          border: 1px solid rgba($color: #80808090, $alpha: 1);
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

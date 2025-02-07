@@ -1,0 +1,146 @@
+.home-container {
+  width: 100%;
+  height: 100vh;
+  .top-wrapper {
+    position: relative;
+    width: 1200px;
+    height: 400px;
+    border: 1px dotted #80808090;
+    border-radius: 10px;
+    overflow: hidden;
+    h1 {
+      font-size: 12rem;
+      text-transform: uppercase;
+      font-weight: 900;
+      text-align: center;
+      line-height: 120px;
+      font-family: lato;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-top: 20px;
+      font-weight: 300;
+      span {
+        font-weight: 900;
+      }
+    }
+  }
+  .top-animate {
+    content: "";
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, black, white);
+    position: absolute;
+    top: 0;
+    left: -200px;
+    animation: animate 3s ease-out infinite;
+  }
+
+  .bottom-animate {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, white, black);
+    position: absolute;
+    bottom: 0;
+    right: -200px;
+    animation: animate2 3s ease-out infinite;
+  }
+
+  .left-animate {
+    width: 2px;
+    height: 200px;
+    background: linear-gradient(to top, white, black);
+    position: absolute;
+    right: 0;
+    top: -200px;
+    animation: animate3 3s ease-out infinite;
+  }
+
+  .right-animate {
+    width: 2px;
+    height: 200px;
+    background: linear-gradient(to bottom, white, black);
+    position: absolute;
+    left: 0;
+    bottom: -200px;
+    animation: animate4 3s ease-out infinite;
+  }
+
+  @keyframes animate {
+    from {
+      left: 0;
+    }
+    to {
+      left: 100%;
+    }
+  }
+  @keyframes animate2 {
+    from {
+      right: 0;
+    }
+    to {
+      right: 100%;
+    }
+  }
+  @keyframes animate3 {
+    from {
+      top: 0;
+    }
+    to {
+      top: calc(100% + 200px);
+    }
+  }
+  @keyframes animate4 {
+    from {
+      bottom: 0;
+    }
+    to {
+      bottom: calc(100% + 200px);
+    }
+  }
+  .bottom-wrapper {
+    .wrapper {
+      width: 598px;
+      height: 100px;
+      border: 1px dotted #80808090;
+      border-radius: 10px;
+      button {
+        width: 80%;
+        height: 55px;
+        background: #eee;
+        color: black;
+        border: none;
+        text-transform: uppercase;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        outline: none;
+        position: relative;
+        span {
+          width: 40px;
+          height: 40px;
+          border: 1px dashed #808080c0;
+          border-radius: 10px;
+          background: inherit;
+          position: absolute;
+          top: -20px;
+          right: -20px;
+          opacity: 0;
+          transition: 0.5s;
+        }
+      }
+      button:hover {
+        span {
+          opacity: 1;
+        }
+      }
+    }
+    .wrapper:last-child {
+      button {
+        background: transparent;
+        border: 1px dotted #80808090;
+        color: inherit;
+      }
+    }
+  }
+}

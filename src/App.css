@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: lato;
+}
+
+.dark-theme {
+  background: black;
+  color: white;
+}
+
+.light-theme {
+  background: white;
+  color: black;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.border {
+  border: 1px solid #80808090;
+}
+
+.border-dashed {
+  border: 1px dashed #80808090;
+}
+
+.bw {
+  justify-content: space-between;
+}
+
+.theme-switcher {
+  position: absolute;
+  width: 105px;
+  height: 55px;
+  padding: 10px;
+  position: fixed;
+  bottom: 50px;
+  gap: 5px;
+  border: 1px solid #80808090;
+  right: 50px;
+  z-index: 1000;
+  border-radius: 10px;
+  .icon-switch {
+    width: 50px;
+    height: 50px;
+    color: black;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: 0.3s;
+  }
+}

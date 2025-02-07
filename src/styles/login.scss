@@ -1,0 +1,135 @@
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  background: rgba($color: #000000, $alpha: 0.3);
+  top: 0;
+  z-index: 1000000;
+  .login-wrapper {
+    padding: 50px 50px;
+    background: white;
+    border-radius: 10px;
+    color: black;
+    animation: pop 1s ease;
+    gap: 20px;
+    .logo {
+      width: 60px;
+      height: 60px;
+      background: #80808047;
+      border-radius: 20px;
+      font-size: 5rem;
+    }
+    h1 {
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: rgba($color: #000000, $alpha: 0.3);
+      span {
+        color: black;
+      }
+    }
+    .form {
+      margin-top: 20px;
+      gap: 10px;
+      .input-wrapper {
+        width: 350px;
+        height: 50px;
+        border: 1px solid #80808090;
+        border-radius: 10px;
+        position: relative;
+        label {
+          padding: 2px 5px;
+          text-transform: uppercase;
+          font-size: 0.6rem;
+          position: absolute;
+          top: -8px;
+          left: 10px;
+          background: white;
+        }
+        input {
+          width: calc(100% - 20px);
+          height: 90%;
+          border: none;
+          outline: none;
+        }
+      }
+      .btn-login {
+        .loader {
+          width: 10px;
+          height: 10px;
+          border: 4px solid transparent;
+          border-top: 4px solid #eee;
+          border-right: 4px solid #eee;
+          border-radius: 50%;
+          animation: rotate 1s linear infinite;
+        }
+
+        text-transform: uppercase;
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        background: #333;
+        border: none;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        margin-left: 200px;
+      }
+      .text {
+        width: 100%;
+        position: relative;
+        span {
+          padding: 0px 20px;
+          background: white;
+          z-index: 1;
+        }
+      }
+      .text::after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #333;
+        position: absolute;
+      }
+      .bottom-btns {
+        justify-content: space-between;
+        width: 100%;
+        .icon {
+          width: 50px;
+          height: 50px;
+          border: 1px solid #80808090;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+        button {
+          width: 180px;
+          height: 50px;
+          text-transform: uppercase;
+          border-radius: 10px;
+          background: #eee;
+          color: black;
+          border: none;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  @keyframes pop {
+    from {
+      scale: 0.5;
+    }
+    to {
+      scale: 1;
+    }
+  }
+  @keyframes rotate {
+    from {
+      rotate: 0;
+    }
+    to {
+      rotate: 360deg;
+    }
+  }
+}
