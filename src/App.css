@@ -61,6 +61,7 @@
 
 button,
 .icon,
-.side {
+.side,
+img {
   cursor: pointer !important;
 }
