@@ -140,12 +140,21 @@
         align-items: center;
         .avatar {
           position: relative;
+
           img {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             background: white;
             z-index: 1;
+          }
+
+          .upload {
+            width: 60px;
+            height: 60px;
+            border: 1px dashed #80808090;
+            border-radius: 50%;
+            cursor: pointer;
           }
           .user-info {
             h3 {
@@ -154,6 +163,7 @@
               text-transform: uppercase;
               margin-top: 10px;
             }
+
             h4 {
               font-weight: 600;
               font-size: 0.8rem;
@@ -161,7 +171,32 @@
             }
           }
         }
-
+        .premium-text {
+          padding: 8px 15px;
+          background: blueviolet;
+          font-size: 0.6rem;
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          font-weight: 600;
+          color: white;
+          border-radius: 10px;
+          text-transform: uppercase;
+          cursor: pointer;
+          z-index: 10;
+        }
+        .edit-opt {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          border: 1px solid #80808090;
+          border-radius: 50%;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          z-index: 10;
+          font-size: 0.7rem;
+        }
         .right-avatar {
           gap: 10px;
           .side {
@@ -183,7 +218,6 @@
         content: "";
         width: calc(100% + 50px);
         height: 125px;
-        // background: #222;
         position: absolute;
         top: -50px;
         left: -50px;
@@ -192,6 +226,7 @@
         width: 100%;
         gap: 10px;
         button {
+          transition: 0.3s;
           width: 90%;
           padding-left: 5%;
           padding-right: 5%;
@@ -207,6 +242,9 @@
             font-size: 1.2rem;
           }
         }
+        button:hover {
+          scale: 1.05;
+        }
       }
       .btn-logout {
         width: 90%;
@@ -217,6 +255,7 @@
         justify-self: flex-end;
         position: absolute;
         bottom: 20px;
+        border: none;
         font-weight: 600;
       }
     }

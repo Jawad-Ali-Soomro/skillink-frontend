@@ -6,6 +6,7 @@ import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { userUrl } from "../utils/apiUrls";
 
 const Login = ({ onClose, isLightMode }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -46,7 +47,7 @@ const Login = ({ onClose, isLightMode }) => {
         if (!formInputs.username || !formInputs.password || !formInputs.email) {
           return toast.error("Please fill all the fields!");
         }
-        response = await axios.post("http://localhost:8080/route/user/new", {
+        response = await axios.post(`${userUrl}/new`, {
           userName: formInputs.username,
           email: formInputs.email,
           handle: formInputs.handle,
@@ -64,7 +65,7 @@ const Login = ({ onClose, isLightMode }) => {
         if (!formInputs.email || !formInputs.password) {
           return toast.error("please fill all the fields!");
         }
-        response = await axios.post("http://localhost:8080/route/user/login", {
+        response = await axios.post(`${userUrl}/login`, {
           email: formInputs.email,
           password: formInputs.password,
         });

@@ -1,30 +1,43 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import "../styles/header.scss";
-import { CgArrowTopRight, CgMenuGridO } from "react-icons/cg";
 import { GiHummingbird } from "react-icons/gi";
 import Login from "./Login";
-import { BiLogOut, BiMessageSquareDetail } from "react-icons/bi";
-import { CiSettings } from "react-icons/ci";
-import {
-  IoLogOutOutline,
-  IoSettings,
-  IoSettingsOutline,
-  IoSettingsSharp,
-} from "react-icons/io5";
-import { BsTools } from "react-icons/bs";
-import { RiDashboard2Line, RiProfileLine } from "react-icons/ri";
+import { BiCamera, BiMessageSquareDetail } from "react-icons/bi";
+import { IoSettingsOutline } from "react-icons/io5";
+import { RiProfileLine } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
-import { MdExplore, MdOutlineExplore } from "react-icons/md";
+import { MdOutlineExplore } from "react-icons/md";
 import { GoGitPullRequest } from "react-icons/go";
-import { FiSettings } from "react-icons/fi";
+import { getUserInfo } from "../utils/getUser";
+import { useEffect } from "react";
+import { BsPencil } from "react-icons/bs";
 
 const Header = ({ isLightMode, isLoggedIn }) => {
+  const userId = window.localStorage.getItem("authUserId");
   const tab = window.location.pathname;
   const [showLogin, setShowLogin] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      if (!userId) return;
+      try {
+        const response = await getUserInfo(userId);
+        setUserInfo(response.foundUser || {});
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+
+    fetchUserInfo();
+  }, [userId]); // Runs only when `userId` changes
   return (
-    <div className="header-container flex bw">
+    <div
+      className="header-container flex bw"
+      style={{ background: isLightMode ? "white" : "black" }}
+    >
       <div className="left-header-wrapper flex">
         <div className="logo flex">
           <div
@@ -112,6 +125,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
             style={{
               background: isLightMode ? "white" : "black",
             }}
+            onClick={(e) => e.stopPropagation()}
           >
             <div
               className="top-profile flex"
@@ -119,12 +133,29 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
               }}
             >
+              <div
+                className="premium-text flex"
+                style={{
+                  background: userInfo?.premium ? "blueviolet" : "gray",
+                }}
+              >
+                <p>{userInfo.premium ? "premium" : "BASIC"}</p>
+              </div>
               <div className="avatar flex col">
-                <img src="https://avatars.githubusercontent.com/u/142707756?v=4" />
+                {userInfo?.avatar !== "" ? (
+                  <img src={userInfo?.avatar} />
+                ) : (
+                  <div className="upload flex">
+                    <BiCamera />
+                  </div>
+                )}
                 <div className="flex col user-info">
-                  <h3>Jawad</h3>
-                  <h4>Web Developer</h4>
+                  <h3>{userInfo?.userName}</h3>
+                  <h4>{userInfo?.position}</h4>
                 </div>
+              </div>
+              <div className="edit-opt flex">
+                <BsPencil />
               </div>
             </div>
             <div className="line"></div>
@@ -160,7 +191,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 <span>my skills</span>
                 <RiProfileLine className="icon" />
               </button>
-              <div className="line"></div>
+              {/* <div className="line"></div> */}
               <button
                 className="sidebar-button flex bw"
                 style={{
@@ -193,14 +224,14 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 <IoSettingsOutline className="icon" />
               </button>
             </div>
-            <div
+            <button
               className="btn-logout flex"
               onClick={() =>
                 window.localStorage.clear() + window.location.reload()
               }
             >
               LOGOUT
-            </div>
+            </button>
           </div>
         </div>
       )}
