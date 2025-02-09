@@ -43,53 +43,60 @@ const Welcome = () => {
   }, [suggestedUsers]);
   return (
     <div className="welcome-container flex col">
-      <div className="suggestions flex col">
-        <div className="flex text bw">
-          <h1>
-            <span>Developers</span> You May Know!
-          </h1>
-          <button>Explore</button>
+      {suggestedUsers.length > 1 ? (
+        <div className="suggestions flex col">
+          <div className="flex text bw">
+            <h1>
+              <span>Developers</span> You May Know!
+            </h1>
+            <button>Explore</button>
+          </div>
+          <div className="suggestion-container flex">
+            {suggestedUsers?.map((user) => {
+              return (
+                <div className="user-card flex col" key={user?._id}>
+                  <div className="bg-image flex">
+                    {user?.bgImage == "" ? (
+                      this
+                    ) : (
+                      <img src={user?.bgImage} alt="" />
+                    )}
+                  </div>
+                  <div className="top-profile flex col">
+                    {user.avatar !== "" ? (
+                      <img
+                        src={`http://localhost:8080${user?.avatar}`}
+                        alt=""
+                      />
+                    ) : (
+                      <div className="circle-avatar flex"></div>
+                    )}
+                    <h2>{user?.userName}</h2>
+                    <h4>@{user?.handle}</h4>
+                  </div>
+                  <h3>{user?.position}</h3>
+                  <div className="btns flex">
+                    <button className="flex">View Profile</button>
+                    <button
+                      className="flex"
+                      onClick={() =>
+                        followUser({
+                          targetUserId: user?._id,
+                          targetUserName: user?.userName,
+                        })
+                      }
+                    >
+                      <FiLink2 />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <div className="suggestion-container flex">
-          {suggestedUsers?.map((user) => {
-            return (
-              <div className="user-card flex col" key={user?._id}>
-                <div className="bg-image flex">
-                  {user?.bgImage == "" ? (
-                    this
-                  ) : (
-                    <img src={user?.bgImage} alt="" />
-                  )}
-                </div>
-                <div className="top-profile flex col">
-                  {user.avatar !== "" ? (
-                    <img src={`http://localhost:8080${user?.avatar}`} alt="" />
-                  ) : (
-                    <div className="circle-avatar flex"></div>
-                  )}
-                  <h2>{user?.userName}</h2>
-                  <h4>@{user?.handle}</h4>
-                </div>
-                <h3>{user?.position}</h3>
-                <div className="btns flex">
-                  <button className="flex">View Profile</button>
-                  <button
-                    className="flex"
-                    onClick={() =>
-                      followUser({
-                        targetUserId: user?._id,
-                        targetUserName: user?.userName,
-                      })
-                    }
-                  >
-                    <FiLink2 />
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      ) : (
+        this
+      )}
       <div className="posts-container flex col">
         <div className="flex text bw">
           <h1>
