@@ -43,7 +43,7 @@ const Welcome = () => {
   }, [suggestedUsers]);
   return (
     <div className="welcome-container flex col">
-      {suggestedUsers.length > 1 ? (
+      {suggestedUsers.length >= 1 ? (
         <div className="suggestions flex col">
           <div className="flex text bw">
             <h1>
@@ -97,59 +97,86 @@ const Welcome = () => {
       ) : (
         this
       )}
-      <div className="posts-container flex col">
-        <div className="flex text bw">
-          <h1>
-            <span>Latest</span> Blogs
-          </h1>
-          <button>Explore</button>
-        </div>
-        <div className="post-wrapper flex">
-          {suggestedPosts?.map((post) => {
-            return (
-              <div className="post-card flex col" key={post?._id}>
-                <div className="top-user flex">
-                  <div className="user-info-main flex">
-                    <img
-                      src={`http://localhost:8080${post?.author?.avatar}`}
-                      alt=""
-                    />
-                    <div className="info flex col">
-                      <h2>{post?.author?.userName}</h2>
-                      {/* <h3>{post?.author?.position}</h3> */}
+      {suggestedPosts?.length >= 1 ? (
+        <div className="posts-container flex col">
+          <div className="flex text bw">
+            <h1>
+              <span>Latest</span> Blogs
+            </h1>
+            <button>Explore</button>
+          </div>
+          <div className="post-wrapper flex">
+            {suggestedPosts?.map((post) => {
+              return (
+                <div className="post-card flex col" key={post?._id}>
+                  <div className="top-user flex">
+                    <div className="user-info-main flex">
+                      <img
+                        src={`http://localhost:8080${post?.author?.avatar}`}
+                        alt=""
+                      />
+                      <div className="info flex col">
+                        <h2>{post?.author?.userName}</h2>
+                      </div>
+                    </div>
+                    <div className="btns flex">
+                      {loggedInUser === post?.author?._id ? (
+                        this
+                      ) : (
+                        <button
+                          style={{
+                            background: post?.author?.followers?.includes(
+                              loggedInUser
+                            )
+                              ? "royalblue"
+                              : "red",
+                            animation: post?.author?.followers?.includes(
+                              loggedInUser
+                            )
+                              ? "popup 300ms ease-in-out"
+                              : "",
+                          }}
+                          onClick={() =>
+                            followUser({
+                              targetUserId: post?.author?._id,
+                              targetUserName: post?.author?.userName,
+                            })
+                          }
+                        >
+                          {post?.author?.followers?.includes(loggedInUser)
+                            ? "Following  "
+                            : "FOLLOW"}
+                        </button>
+                      )}
                     </div>
                   </div>
-                  <div className="btns flex">
+                  <h4>{post?.description?.substring(0, 80)}...</h4>
+                  <div className="image-main">
+                    <img src={post?.image} alt="" />
+                  </div>
+                  <div className="icons flex">
                     {loggedInUser === post?.author?._id ? (
                       this
                     ) : (
-                      <button>Follow</button>
+                      <div className="icon flex">
+                        <p>LIKE</p>
+                        <IoMdHeartEmpty />
+                      </div>
                     )}
-                  </div>
-                </div>
-                <div className="image-main">
-                  <img src={post?.image} alt="" />
-                </div>
-                <div className="icons flex">
-                  {loggedInUser === post?.author?._id ? (
-                    this
-                  ) : (
-                    <div className="icon flex">
-                      <p>LIKE</p>
-                      <IoMdHeartEmpty />
-                    </div>
-                  )}
 
-                  <div className="icon flex">
-                    <p>SHARE</p>
-                    <IoShareSocialOutline />
+                    <div className="icon flex">
+                      <p>SHARE</p>
+                      <IoShareSocialOutline />
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      ) : (
+        this
+      )}
     </div>
   );
 };

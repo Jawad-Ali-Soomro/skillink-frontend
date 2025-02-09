@@ -51,7 +51,7 @@
             width: 100px;
             height: 100px;
             background: linear-gradient(45deg, orange, blueviolet);
-            border-radius: 50%;
+            border-radius: 50% !important;
           }
           h2 {
             font-size: 1rem;
@@ -178,31 +178,39 @@
                 text-transform: capitalize;
                 font-weight: 700;
               }
+              h3 {
+                font-weight: 300;
+                font-size: 0.8rem;
+              }
             }
           }
           .btns {
             gap: 10px;
             button {
-              border: 1px solid transparent;
               width: 150px;
               height: 40px;
               border-radius: 10px;
-              background: #222;
               border: none;
               color: white;
-              border: 1px solid #80808090;
               text-transform: uppercase;
               font-size: 0.7rem;
               font-weight: 600;
             }
-            button:hover {
-              border: 1px solid #80808090;
+
+            @keyframes popup {
+              from {
+                scale: 0.9;
+              }
+              to {
+                scale: 1.05;
+              }
             }
           }
         }
-        h1 {
-          font-size: 1.2rem;
-          font-weight: 500;
+        h4 {
+          margin-top: 20px;
+          font-size: 0.9rem;
+          font-weight: 400;
         }
         .image-main {
           margin-top: 20px;
