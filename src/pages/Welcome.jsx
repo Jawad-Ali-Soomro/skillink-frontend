@@ -7,26 +7,40 @@ import { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FiLink2 } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const Welcome = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
   const [suggestedPosts, setsuggestedPosts] = useState([]);
+  const loggedInUser = window.localStorage.getItem("authUserId");
+
+  const getSuggested = async () => {
+    const response = await axios.get(
+      `${userUrl}/suggest/${window.localStorage.getItem("authUserId")}`
+    );
+    setSuggestedUsers(response.data);
+  };
+  const getAllPosts = async () => {
+    const response = await axios.get(`${postUrl}/get-all`);
+    setsuggestedPosts(response.data.posts);
+  };
+  const followUser = async ({ targetUserId, targetUserName }) => {
+    const response = await axios.patch(`${userUrl}/toggle-follow`, {
+      currentUserId: loggedInUser,
+      targetUserId,
+    });
+    response.status === 200
+      ? toast.success(`Following ${targetUserName}`)
+      : this;
+    getSuggested();
+  };
+
   useEffect(() => {
-    const getSuggested = async () => {
-      const response = await axios.get(
-        `${userUrl}/suggest/${window.localStorage.getItem("authUserId")}`
-      );
-      setSuggestedUsers(response.data);
-    };
-    const getAllPosts = async () => {
-      const response = await axios.get(`${postUrl}/get-all`);
-      setsuggestedPosts(response.data.posts);
-    };
     return () => {
       getSuggested();
       getAllPosts();
     };
-  }, []);
+  }, [suggestedUsers]);
   return (
     <div className="welcome-container flex col">
       <div className="suggestions flex col">
@@ -59,7 +73,15 @@ const Welcome = () => {
                 <h3>{user?.position}</h3>
                 <div className="btns flex">
                   <button className="flex">View Profile</button>
-                  <button className="flex">
+                  <button
+                    className="flex"
+                    onClick={() =>
+                      followUser({
+                        targetUserId: user?._id,
+                        targetUserName: user?.userName,
+                      })
+                    }
+                  >
                     <FiLink2 />
                   </button>
                 </div>
@@ -91,17 +113,25 @@ const Welcome = () => {
                     </div>
                   </div>
                   <div className="btns flex">
-                    <button>Follow</button>
+                    {loggedInUser === post?.author?._id ? (
+                      this
+                    ) : (
+                      <button>Follow</button>
+                    )}
                   </div>
                 </div>
                 <div className="image-main">
                   <img src={post?.image} alt="" />
                 </div>
                 <div className="icons flex">
-                  <div className="icon flex">
-                    <p>LIKE</p>
-                    <IoMdHeartEmpty />
-                  </div>
+                  {loggedInUser === post?.author?._id ? (
+                    this
+                  ) : (
+                    <div className="icon flex">
+                      <p>LIKE</p>
+                      <IoMdHeartEmpty />
+                    </div>
+                  )}
 
                   <div className="icon flex">
                     <p>SHARE</p>
