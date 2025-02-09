@@ -2,6 +2,15 @@
   margin: 0;
   padding: 0;
   font-family: lato;
+  border-radius: 25px !important;
+}
+
+.icon-no-border {
+  border-radius: 0 !important;
+}
+
+button {
+  height: 50px !important;
 }
 
 .dark-theme {

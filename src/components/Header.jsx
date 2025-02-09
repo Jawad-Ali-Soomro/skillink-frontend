@@ -155,7 +155,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                 </div>
               </div>
               <div className="edit-opt flex">
-                <BsPencil />
+                <BsPencil className="icon-no-border" />
               </div>
             </div>
             <div className="line"></div>

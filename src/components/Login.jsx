@@ -166,13 +166,16 @@ const Login = ({ onClose, isLightMode }) => {
 
           <div className="bottom-btns flex">
             <div className="icon flex">
-              <FiGithub />
+              <FiGithub
+                className="icon-no-border"
+                style={{ borderRadius: "0px !important" }}
+              />
             </div>
             <div className="icon flex">
-              <FiLinkedin />
+              <FiLinkedin className="icon-no-border" />
             </div>
             <div className="icon flex">
-              <FiInstagram />
+              <FiInstagram className="icon-no-border" />
             </div>
             <button
               className="flex"

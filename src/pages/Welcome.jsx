@@ -102,16 +102,19 @@ const Welcome = () => {
                     {/* <button>Profile</button> */}
                   </div>
                 </div>
-                <div className="line"></div>
+                {/* <div className="line"></div> */}
+                {/* <h1>{post?.title.substring(0, 40)}...</h1> */}
                 <div className="image-main">
                   <img src={post?.image} alt="" />
                 </div>
                 <div className="icons flex">
                   <div className="icon flex">
+                    <p>LIKE</p>
                     <IoMdHeartEmpty />
                   </div>
 
                   <div className="icon flex">
+                    <p>SHARE</p>
                     <IoShareSocialOutline />
                   </div>
                 </div>
