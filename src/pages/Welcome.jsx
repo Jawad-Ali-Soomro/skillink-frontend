@@ -150,7 +150,7 @@ const Welcome = () => {
                       )}
                     </div>
                   </div>
-                  <h4>{post?.description?.substring(0, 80)}...</h4>
+                  {/* <h4>{post?.description?.substring(0, 80)}...</h4> */}
                   <div className="image-main">
                     <img src={post?.image} alt="" />
                   </div>
