@@ -155,6 +155,18 @@
             border: 1px dashed #80808090;
             border-radius: 50%;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer !important;
+            input {
+              cursor: pointer !important;
+              width: 100px;
+              height: 100px;
+              position: absolute;
+              top: 0;
+              opacity: 0;
+              z-index: 1;
+            }
           }
           .user-info {
             h3 {

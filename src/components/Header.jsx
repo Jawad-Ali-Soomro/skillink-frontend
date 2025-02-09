@@ -13,6 +13,8 @@ import { GoGitPullRequest } from "react-icons/go";
 import { getUserInfo } from "../utils/getUser";
 import { useEffect } from "react";
 import { BsPencil } from "react-icons/bs";
+import axios from "axios";
+import { userUrl } from "../utils/apiUrls";
 
 const Header = ({ isLightMode, isLoggedIn }) => {
   const userId = window.localStorage.getItem("authUserId");
@@ -20,6 +22,43 @@ const Header = ({ isLightMode, isLoggedIn }) => {
   const [showLogin, setShowLogin] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [userInfo, setUserInfo] = useState({});
+
+  const handleAvatarUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) {
+      console.error("No file selected");
+      return;
+    }
+
+    const formData = new FormData();
+    const userId = window.localStorage.getItem("authUserId");
+    console.log(userId);
+    formData.append("avatar", file);
+    formData.append("userId", userId);
+
+    try {
+      const response = await axios.post(`${userUrl}/upload-avatar`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log("Upload Response:", response.data); // Debugging line
+
+      if (response.data?.avatar) {
+        setUserInfo((prev) => ({ ...prev, avatar: response.data.avatar }));
+      } else {
+        console.error(
+          "Upload failed:",
+          response.data.message || "No avatar URL in response"
+        );
+      }
+    } catch (error) {
+      console.error(
+        "Error uploading avatar:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       if (!userId) return;
@@ -143,9 +182,18 @@ const Header = ({ isLightMode, isLoggedIn }) => {
               </div>
               <div className="avatar flex col">
                 {userInfo?.avatar !== "" ? (
-                  <img src={userInfo?.avatar} />
+                  <img
+                    src={`http://localhost:8080${userInfo?.avatar}`}
+                    alt="User Avatar"
+                  />
                 ) : (
                   <div className="upload flex">
+                    <input
+                      type="file"
+                      name="avatar"
+                      onChange={handleAvatarUpload}
+                      id=""
+                    />
                     <BiCamera />
                   </div>
                 )}

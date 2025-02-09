@@ -1,24 +1,12 @@
+/* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import "../styles/welcome.scss";
 import axios from "axios";
 import { postUrl, userUrl } from "../utils/apiUrls";
 import { useState } from "react";
-import {
-  BiCommand,
-  BiComment,
-  BiCommentDetail,
-  BiLike,
-  BiMessage,
-  BiMessageSquareDetail,
-  BiShare,
-} from "react-icons/bi";
-import { BsChatDots } from "react-icons/bs";
-import { HiHeart } from "react-icons/hi2";
-import { TiHeartOutline } from "react-icons/ti";
-import { AiOutlineComment } from "react-icons/ai";
-import { IoIosHeart, IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeartEmpty } from "react-icons/io";
 import { IoShareSocialOutline } from "react-icons/io5";
-import { GoComment } from "react-icons/go";
+import { FiLink2 } from "react-icons/fi";
 
 const Welcome = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
@@ -61,7 +49,7 @@ const Welcome = () => {
                 </div>
                 <div className="top-profile flex col">
                   {user.avatar !== "" ? (
-                    <img src={user?.avatar} alt="" />
+                    <img src={`http://localhost:8080${user?.avatar}`} alt="" />
                   ) : (
                     <div className="circle-avatar flex"></div>
                   )}
@@ -71,7 +59,9 @@ const Welcome = () => {
                 <h3>{user?.position}</h3>
                 <div className="btns flex">
                   <button className="flex">View Profile</button>
-                  <button className="flex">Follow</button>
+                  <button className="flex">
+                    <FiLink2 />
+                  </button>
                 </div>
               </div>
             );
@@ -91,7 +81,10 @@ const Welcome = () => {
               <div className="post-card flex col" key={post?._id}>
                 <div className="top-user flex">
                   <div className="user-info-main flex">
-                    <img src={post?.author?.avatar} alt="" />
+                    <img
+                      src={`http://localhost:8080${post?.author?.avatar}`}
+                      alt=""
+                    />
                     <div className="info flex col">
                       <h2>{post?.author?.userName}</h2>
                       {/* <h3>{post?.author?.position}</h3> */}
@@ -99,11 +92,8 @@ const Welcome = () => {
                   </div>
                   <div className="btns flex">
                     <button>Follow</button>
-                    {/* <button>Profile</button> */}
                   </div>
                 </div>
-                {/* <div className="line"></div> */}
-                {/* <h1>{post?.title.substring(0, 40)}...</h1> */}
                 <div className="image-main">
                   <img src={post?.image} alt="" />
                 </div>
