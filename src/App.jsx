@@ -31,10 +31,13 @@ function App() {
         }}
         containerStyle={{
           textTransform: "capitalize",
-          fontWeight: 600,
+          fontWeight: 400,
         }}
       />
-      <div className="theme-switcher flex">
+      <div
+        className="theme-switcher flex"
+        style={{ background: isLightMode ? "white" : "black" }}
+      >
         <div
           className="icon-switch flex"
           style={{

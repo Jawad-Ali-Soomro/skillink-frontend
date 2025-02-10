@@ -8,7 +8,7 @@
     width: 100%;
 
     .suggestion-container {
-      margin-top: 20px;
+      margin-top: 50px;
       width: 100% !important;
       gap: 10px;
       flex-wrap: wrap;
@@ -20,13 +20,18 @@
         height: 300px;
         overflow: hidden;
         position: relative;
+        background: linear-gradient(
+          45deg,
+          rgba(0, 0, 0, 0.2),
+          rgba(255, 255, 255, 0.1)
+        );
         gap: 10px;
         .bg-image {
           width: 100%;
           height: 170px;
           border-radius: 0 !important;
           z-index: -1;
-          background: #222;
+          // background: #222;
           position: absolute;
           overflow: hidden;
           border: none;
@@ -42,8 +47,8 @@
           // top: 50px;
           img {
             align-items: start;
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50% !important;
             background: white;
           }
@@ -147,7 +152,7 @@
       width: 100%;
     }
     .post-wrapper {
-      margin-top: 20px;
+      margin-top: 50px;
       gap: 10px;
       flex-wrap: wrap;
       width: 100%;
@@ -158,8 +163,13 @@
         justify-content: start;
         width: 525px;
         padding: 20px;
-        border: 1px solid #80808090;
+        border: 1px solid #8080804c;
         border-radius: 10px;
+        background: linear-gradient(
+          45deg,
+          rgba(0, 0, 0, 0.2),
+          rgba(255, 255, 255, 0.1)
+        );
         align-items: start;
         .top-user {
           width: 100%;
@@ -209,16 +219,19 @@
           }
         }
         h4 {
-          margin-top: 20px;
+          margin-top: 10px;
           font-size: 0.9rem;
           font-weight: 400;
         }
-        .image-main {
+        h3 {
           margin-top: 20px;
+          font-size: 1.1rem;
+        }
+        .image-main {
+          margin-top: 50px;
           img {
             width: 525px;
             height: 300px;
-            border-radius: 10px;
           }
         }
         .icons {
@@ -228,6 +241,7 @@
           .icon {
             background: #eee;
             color: black;
+            border: 1px solid #80808090;
             p {
               font-size: 0.8rem;
               font-weight: 600;

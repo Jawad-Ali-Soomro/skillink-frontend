@@ -144,7 +144,7 @@ const Welcome = () => {
                               loggedInUser
                             )
                               ? "transparent"
-                              : "blueviolet",
+                              : "#eee",
 
                             border: post?.author?.followers?.includes(
                               loggedInUser
@@ -156,7 +156,7 @@ const Welcome = () => {
                               loggedInUser
                             )
                               ? "inherit"
-                              : "white",
+                              : "black",
                           }}
                           onClick={() =>
                             followUser({
@@ -172,7 +172,8 @@ const Welcome = () => {
                       )}
                     </div>
                   </div>
-                  {/* <h4>{post?.description?.substring(0, 80)}...</h4> */}
+                  <h3>{post?.title?.substring(0, 30)}</h3>
+                  <h4>{post?.description?.substring(0, 60)}...</h4>
                   <div className="image-main">
                     <img src={post?.image} alt="" />
                   </div>
