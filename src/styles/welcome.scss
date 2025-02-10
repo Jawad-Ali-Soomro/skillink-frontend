@@ -228,10 +228,25 @@
           font-size: 1.1rem;
         }
         .image-main {
-          margin-top: 50px;
+          margin-top: 20px;
           img {
             width: 525px;
             height: 300px;
+          }
+        }
+        .tags {
+          margin-top: 20px;
+          width: 100%;
+          justify-content: end;
+          align-items: end;
+          gap: 5px;
+          .tag {
+            padding: 10px 20px;
+            background: #222;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            font-weight: 600;
           }
         }
         .icons {

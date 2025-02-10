@@ -172,8 +172,17 @@ const Welcome = () => {
                       )}
                     </div>
                   </div>
-                  <h3>{post?.title?.substring(0, 30)}</h3>
-                  <h4>{post?.description?.substring(0, 60)}...</h4>
+                  {/* <h3>{post?.title?.substring(0, 30)}</h3> */}
+                  {/* <h4>{post?.description?.substring(0, 60)}...</h4> */}
+                  <div className="tags flex">
+                    {post?.tags?.map((tag) => {
+                      return (
+                        <div className="tag flex" key={tag}>
+                          #{tag}
+                        </div>
+                      );
+                    })}
+                  </div>
                   <div className="image-main">
                     <img src={post?.image} alt="" />
                   </div>
