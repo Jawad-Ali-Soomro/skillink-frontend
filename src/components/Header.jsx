@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { BsPencil } from "react-icons/bs";
 import axios from "axios";
 import { userUrl } from "../utils/apiUrls";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ isLightMode, isLoggedIn }) => {
   const userId = window.localStorage.getItem("authUserId");
@@ -23,6 +24,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [userInfo, setUserInfo] = useState({});
 
+  const navigate = useNavigate();
   const handleAvatarUpload = async (e) => {
     const file = e.target.files[0];
     if (!file) {
@@ -77,7 +79,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
       className="header-container flex bw"
       style={{ background: isLightMode ? "white" : "black" }}
     >
-      <div className="left-header-wrapper flex">
+      <div className="left-header-wrapper flex" onClick={() => navigate("/")}>
         <div className="logo flex">
           <div
             className="circle flex"

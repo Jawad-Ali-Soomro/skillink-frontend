@@ -7,6 +7,7 @@ import {} from "react-hot-toast";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./pages/Welcome";
+import User from "./pages/User";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
@@ -29,9 +30,8 @@ function App() {
           position: "top-right",
         }}
         containerStyle={{
-          textTransform: "uppercase",
+          textTransform: "capitalize",
           fontWeight: 600,
-          fontSize: "1rem",
         }}
       />
       <div className="theme-switcher flex">
@@ -60,6 +60,7 @@ function App() {
         <Header isLightMode={isLightMode} isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={isLoggedIn ? <Welcome /> : <Home />}></Route>
+          <Route path="/user/:userId" element={<User />}></Route>
         </Routes>
       </BrowserRouter>
     </>

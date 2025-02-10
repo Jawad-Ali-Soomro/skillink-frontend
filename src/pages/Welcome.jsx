@@ -8,11 +8,13 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { FiLink2 } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Welcome = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
   const [suggestedPosts, setsuggestedPosts] = useState([]);
   const loggedInUser = window.localStorage.getItem("authUserId");
+  const navigate = useNavigate();
 
   const getSuggested = async () => {
     const response = await axios.get(
@@ -29,9 +31,10 @@ const Welcome = () => {
       currentUserId: loggedInUser,
       targetUserId,
     });
-    response.status === 200
+    console.log(response.data);
+    response.data.followed === true
       ? toast.success(`Following ${targetUserName}`)
-      : this;
+      : toast.success(`Unfollowing ${targetUserName}`);
     getSuggested();
   };
 
@@ -67,16 +70,25 @@ const Welcome = () => {
                       <img
                         src={`http://localhost:8080${user?.avatar}`}
                         alt=""
+                        onClick={() => navigate(`/user/${user?._id}`)}
                       />
                     ) : (
-                      <div className="circle-avatar flex"></div>
+                      <div
+                        className="circle-avatar flex"
+                        onClick={() => navigate(`/user/${user?._id}`)}
+                      ></div>
                     )}
                     <h2>{user?.userName}</h2>
-                    <h4>@{user?.handle}</h4>
+                    {/* <h4>@{user?.handle}</h4> */}
                   </div>
                   <h3>{user?.position}</h3>
                   <div className="btns flex">
-                    <button className="flex">View Profile</button>
+                    <button
+                      className="flex"
+                      onClick={() => navigate(`/user/${user?._id}`)}
+                    >
+                      View Profile
+                    </button>
                     <button
                       className="flex"
                       onClick={() =>
@@ -110,7 +122,10 @@ const Welcome = () => {
               return (
                 <div className="post-card flex col" key={post?._id}>
                   <div className="top-user flex">
-                    <div className="user-info-main flex">
+                    <div
+                      className="user-info-main flex"
+                      onClick={() => navigate(`/user/${post?.author?._id}`)}
+                    >
                       <img
                         src={`http://localhost:8080${post?.author?.avatar}`}
                         alt=""
@@ -128,13 +143,20 @@ const Welcome = () => {
                             background: post?.author?.followers?.includes(
                               loggedInUser
                             )
-                              ? "royalblue"
-                              : "red",
-                            animation: post?.author?.followers?.includes(
+                              ? "transparent"
+                              : "blueviolet",
+
+                            border: post?.author?.followers?.includes(
                               loggedInUser
                             )
-                              ? "popup 300ms ease-in-out"
-                              : "",
+                              ? "1px solid #80808090"
+                              : "none",
+
+                            color: post?.author?.followers?.includes(
+                              loggedInUser
+                            )
+                              ? "inherit"
+                              : "white",
                           }}
                           onClick={() =>
                             followUser({
