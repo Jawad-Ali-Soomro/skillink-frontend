@@ -1,6 +1,5 @@
 .home-container {
   width: 100%;
-  height: 100vh;
   .top-wrapper {
     position: relative;
     width: 1200px;
@@ -112,7 +111,7 @@
       border-radius: 10px;
       button {
         width: 80%;
-        height: 60px !important;
+        height: 70px !important;
         background: #eee;
         color: black;
         border: none;
@@ -126,6 +125,9 @@
           width: 40px;
           height: 40px;
           border: 1px dashed #808080c0;
+          background: white !important  ;
+          color: black;
+          z-index: 10;
           border-radius: 10px;
           background: inherit;
           position: absolute;
@@ -146,6 +148,104 @@
         background: transparent;
         border: 1px dotted #80808090;
         color: inherit;
+      }
+    }
+  }
+  .top-container {
+    height: 100vh;
+  }
+  .skills-container {
+    width: 80%;
+    overflow: hidden;
+    margin-bottom: 100px;
+    position: relative;
+    white-space: nowrap;
+    margin-top: 100px;
+
+    .marquee-content {
+      display: flex;
+      gap: 40px;
+      // animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 3rem;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(0, 0, 0, 0.1)
+      );
+      font-weight: 600;
+      border-radius: 50% !important;
+      cursor: pointer;
+      border: 1px solid #8080800f;
+      transition: 0.3s;
+    }
+
+    .skill-item:hover {
+      border: 1px solid #80808090;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .icon {
+      font-size: 5rem;
+    }
+
+    .react {
+      color: #61dbfb;
+    }
+    .node {
+      color: #3c873a;
+    }
+    .python {
+      color: #ffd43b;
+    }
+    .java {
+      color: #e76f00;
+    }
+    .figma {
+      color: #a259ff;
+    }
+    .ethereum {
+      color: #3c3c3d;
+    }
+    .database {
+      color: #4db33d;
+    }
+    .code {
+      color: #333;
+    }
+  }
+
+  .tagline {
+    height: 50vh;
+    h1 {
+      font-size: 8rem;
+      text-align: center;
+      font-weight: 300;
+      .text {
+        font-weight: 900;
+        position: relative;
+        background: #222;
+        color: white;
+        padding: 10px 50px;
+      }
+      span {
+        font-weight: 900;
       }
     }
   }
