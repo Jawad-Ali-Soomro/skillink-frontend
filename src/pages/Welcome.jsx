@@ -9,12 +9,24 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { FiLink2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { FaHeartBroken } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa6";
+import Share from "../components/Share";
 
 const Welcome = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
   const [suggestedPosts, setsuggestedPosts] = useState([]);
+  const [showShare, setShowShare] = useState(false);
   const loggedInUser = window.localStorage.getItem("authUserId");
   const navigate = useNavigate();
+  const likePost = async (postId) => {
+    const response = await axios.post(`${postUrl}/like/${postId}`, {
+      userId: loggedInUser,
+    });
+    console.log(response.data);
+  };
+
+  const [shareableLink, setShareAbleLink] = useState("");
 
   const getSuggested = async () => {
     const response = await axios.get(
@@ -190,13 +202,40 @@ const Welcome = () => {
                     {loggedInUser === post?.author?._id ? (
                       this
                     ) : (
-                      <div className="icon flex">
-                        <p>LIKE</p>
-                        <IoMdHeartEmpty />
+                      <div
+                        className="icon flex"
+                        onClick={() => likePost(post?._id)}
+                        style={{
+                          background: post?.likes?.includes(loggedInUser)
+                            ? "red"
+                            : "",
+                          color: post?.likes?.includes(loggedInUser)
+                            ? "white"
+                            : "",
+                        }}
+                      >
+                        <p>
+                          {post?.likes?.includes(loggedInUser)
+                            ? "UNLIKE"
+                            : "LIKE"}
+                        </p>
+                        {post?.likes?.includes(loggedInUser) ? (
+                          <FaHeartBroken />
+                        ) : (
+                          <FaHeart />
+                        )}
                       </div>
                     )}
 
-                    <div className="icon flex">
+                    <div
+                      className="icon flex"
+                      onClick={() =>
+                        setShowShare(true) +
+                        setShareAbleLink(
+                          `http://localhost:5173/post/${post?._id}`
+                        )
+                      }
+                    >
                       <p>SHARE</p>
                       <IoShareSocialOutline />
                     </div>
@@ -208,6 +247,13 @@ const Welcome = () => {
         </div>
       ) : (
         this
+      )}
+
+      {showShare && (
+        <Share
+          linkShareable={shareableLink}
+          onClose={() => setShowShare(false)}
+        />
       )}
     </div>
   );

@@ -4,7 +4,7 @@
     position: relative;
     width: 1200px;
     height: 400px;
-    border: 1px dotted #80808090;
+    // border: 1px dotted #80808090;
     border-radius: 10px;
     overflow: hidden;
     h1 {
@@ -25,6 +25,7 @@
       font-size: 2rem;
       margin-top: 20px;
       font-weight: 300;
+      text-transform: uppercase;
       span {
         font-weight: 900;
       }
@@ -71,39 +72,40 @@
     animation: animate4 3s ease-out infinite;
   }
 
-  @keyframes animate {
-    from {
-      left: 0;
-    }
-    to {
-      left: 100%;
-    }
-  }
-  @keyframes animate2 {
-    from {
-      right: 0;
-    }
-    to {
-      right: 100%;
-    }
-  }
-  @keyframes animate3 {
-    from {
-      top: 0;
-    }
-    to {
-      top: calc(100% + 200px);
-    }
-  }
-  @keyframes animate4 {
-    from {
-      bottom: 0;
-    }
-    to {
-      bottom: calc(100% + 200px);
-    }
-  }
+  // @keyframes animate {
+  //   from {
+  //     left: 0;
+  //   }
+  //   to {
+  //     left: 100%;
+  //   }
+  // }
+  // @keyframes animate2 {
+  //   from {
+  //     right: 0;
+  //   }
+  //   to {
+  //     right: 100%;
+  //   }
+  // }
+  // @keyframes animate3 {
+  //   from {
+  //     top: 0;
+  //   }
+  //   to {
+  //     top: calc(100% + 200px);
+  //   }
+  // }
+  // @keyframes animate4 {
+  //   from {
+  //     bottom: 0;
+  //   }
+  //   to {
+  //     bottom: calc(100% + 200px);
+  //   }
+  // }
   .bottom-wrapper {
+    margin-top: 20px;
     .wrapper {
       width: 598px;
       height: 100px;
@@ -164,7 +166,7 @@
 
     .marquee-content {
       display: flex;
-      gap: 40px;
+      gap: 10px;
       // animation: marquee 10s linear infinite;
     }
 
@@ -236,16 +238,13 @@
     h1 {
       font-size: 8rem;
       text-align: center;
-      font-weight: 300;
+      font-weight: 900;
       .text {
         font-weight: 900;
         position: relative;
         background: #222;
         color: white;
         padding: 10px 50px;
-      }
-      span {
-        font-weight: 900;
       }
     }
   }

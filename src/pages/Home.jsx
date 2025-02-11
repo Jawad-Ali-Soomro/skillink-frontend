@@ -38,14 +38,19 @@ const Home = () => {
           <div className="bottom-animate"></div>
           <div className="left-animate"></div>
           <div className="right-animate"></div>
-          <h1 data-aos="fade-right">
-            <span data-aos="fade-right">SKILL</span>
+          <h1 data-aos="fade-right" data-aos-delay="500">
+            <span data-aos="fade-right" data-aos-delay="1000">
+              Skill
+            </span>
             INK
           </h1>
+          <h2 data-aos="fade-left" data-aos-delay="3000">
+            The <span>better</span> way to <span>showcase</span> your skills.
+          </h2>
         </div>
         <div className="bottom-wrapper flex">
           <div className="wrapper flex">
-            <button className="flex" data-aos="zoom-out">
+            <button className="flex" data-aos="zoom-out" data-aos-delay="1000">
               Get STarted{" "}
               <span className="flex">
                 <CgArrowTopRight />
@@ -53,7 +58,7 @@ const Home = () => {
             </button>
           </div>
           <div className="wrapper flex">
-            <button className="flex" data-aos="zoom-out" data-aos-delay="400">
+            <button className="flex" data-aos="zoom-out" data-aos-delay="2000">
               api references{" "}
               <span className="flex">
                 <CgArrowTopRight />

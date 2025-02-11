@@ -1,0 +1,66 @@
+.share-screen {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: rgba($color: #000000, $alpha: 0.3);
+  top: 0;
+  left: 0;
+  z-index: 100;
+  border-radius: 0 !important;
+  .container-share {
+    padding: 50px;
+    background: white;
+    animation: animate 1s ease;
+    color: black;
+    h1 {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-weight: 400;
+      span {
+        font-weight: 900;
+      }
+    }
+    .icons {
+      margin: 50px 0;
+      gap: 10px;
+      .icon {
+        font-size: 1.5rem;
+        border-radius: 0 !important;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #80808090;
+        border-radius: 50% !important;
+      }
+    }
+    .link-shareable {
+      width: 420px;
+      height: 50px;
+      border: 1px solid #80808090;
+      justify-content: space-between;
+      padding: 5px;
+      padding-left: 20px;
+      border-radius: 50px !important;
+      p {
+        font-weight: 600;
+        font-size: 0.7rem;
+      }
+      .btn-copy {
+        width: 120px;
+        height: 100%;
+        background: #222;
+        color: white;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  @keyframes animate {
+    from {
+      scale: 0.5;
+    }
+    to {
+      scale: 1;
+    }
+  }
+}
