@@ -198,8 +198,8 @@
           .btns {
             gap: 10px;
             button {
-              width: 150px;
-              height: 40px;
+              width: 140px;
+              height: 35px;
               border-radius: 10px;
               border: none;
               color: white;
@@ -228,7 +228,7 @@
           font-size: 1.1rem;
         }
         .image-main {
-          margin-top: 20px;
+          margin-top: 50px;
           img {
             width: 525px;
             height: 300px;
@@ -247,6 +247,7 @@
             text-transform: uppercase;
             font-size: 0.7rem;
             font-weight: 600;
+            cursor: pointer;
           }
         }
         .icons {

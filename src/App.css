@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: Lato;
-  border-radius: 25px !important;
+  border-radius: 15px !important;
   /* text-transform: capitalize !important; */
 }
 
@@ -53,7 +53,7 @@ button {
   padding: 10px;
   position: fixed;
   bottom: 50px;
-  border-radius: 50px !important;
+  border-radius: 15px !important;
   gap: 5px;
   border: 1px solid #80808090;
   right: 50px;
@@ -75,4 +75,8 @@ button,
 .side,
 img {
   cursor: pointer !important;
+}
+
+.container-no-radius {
+  border-radius: 0 !important;
 }

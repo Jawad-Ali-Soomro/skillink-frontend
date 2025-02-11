@@ -186,6 +186,9 @@ const Welcome = () => {
                   </div>
                   {/* <h3>{post?.title?.substring(0, 30)}</h3> */}
                   {/* <h4>{post?.description?.substring(0, 60)}...</h4> */}
+                  <div className="image-main">
+                    <img src={post?.image} alt="" />
+                  </div>
                   <div className="tags flex">
                     {post?.tags?.map((tag) => {
                       return (
@@ -194,9 +197,6 @@ const Welcome = () => {
                         </div>
                       );
                     })}
-                  </div>
-                  <div className="image-main">
-                    <img src={post?.image} alt="" />
                   </div>
                   <div className="icons flex">
                     {loggedInUser === post?.author?._id ? (

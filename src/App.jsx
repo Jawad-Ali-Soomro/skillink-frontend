@@ -25,6 +25,7 @@ function App() {
   return (
     <>
       <Toaster
+        containerClassName="container-no-radius"
         toastOptions={{
           duration: "200",
           position: "top-right",
@@ -32,6 +33,7 @@ function App() {
         containerStyle={{
           textTransform: "capitalize",
           fontWeight: 400,
+          borderRadius: "0 !important",
         }}
       />
       <div
