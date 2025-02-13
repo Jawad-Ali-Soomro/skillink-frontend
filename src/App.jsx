@@ -11,7 +11,7 @@ import User from "./pages/User";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
-  const [isLightMode, setIsLightMode] = useState(false);
+  const [isLightMode, setIsLightMode] = useState(true);
   useEffect(() => {
     if (isLightMode) {
       document.body.classList.add("light-theme");

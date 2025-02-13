@@ -67,17 +67,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div
-        className="tagline flex"
-        data-aos="fade-right"
-        data-aos-delay="500"
-        data-aos-easing="ease-in-out"
-      >
-        <h1>
-          <span>Connecting</span> <b className="text">Talent</b> With{" "}
-          <span>Opportunity</span>!
-        </h1>
-      </div>
+
       <div className="skills-container flex">
         <div className="marquee-content flex">
           {skills.map((skill, index) => (
