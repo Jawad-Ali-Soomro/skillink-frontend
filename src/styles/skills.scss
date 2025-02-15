@@ -1,0 +1,120 @@
+.container-skills {
+  margin-top: 15vh;
+  padding-bottom: 15vh;
+  .suggestion-container {
+    width: 100% !important;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    .user-card {
+      width: 295.5px;
+      padding: 20px;
+      border: 1px solid #80808090;
+      border-radius: 10px;
+      height: 300px;
+      overflow: hidden;
+      position: relative;
+      .icon {
+        font-size: 5rem;
+      }
+      background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(255, 255, 255, 0.1)
+      );
+      gap: 10px;
+      .bg-image {
+        width: 100%;
+        height: 170px;
+        border-radius: 0 !important;
+        z-index: -1;
+        // background: #222;
+        position: absolute;
+        overflow: hidden;
+        border: none;
+        top: 0;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .top-profile {
+        gap: 10px;
+        // position: absolute;
+        // top: 50px;
+        img {
+          align-items: start;
+          width: 120px;
+          height: 120px;
+          border-radius: 50% !important;
+          background: white;
+        }
+        .circle-avatar {
+          width: 100px;
+          height: 100px;
+          background: linear-gradient(45deg, orange, blueviolet);
+          border-radius: 50% !important;
+          cursor: pointer;
+        }
+        h2 {
+          font-size: 1rem;
+          font-weight: 500;
+          line-height: 10px;
+          margin-top: 10px;
+          text-transform: capitalize;
+        }
+        p {
+          font-size: 0.8rem;
+          text-align: justify;
+          font-weight: 300;
+        }
+        h4 {
+          text-transform: lowercase;
+          font-weight: 400;
+        }
+      }
+      h3 {
+        font-size: 1rem;
+        padding: 10px 20px;
+        background: #eee;
+        color: black;
+        border-radius: 10px;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        line-height: 10px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      .btns {
+        position: absolute;
+        gap: 5px;
+        bottom: 10px;
+        margin-top: 20px;
+        button {
+          width: 260px;
+          height: 40px;
+          border: none;
+          border-radius: 10px;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          font-weight: 600;
+          background: #eee;
+          color: black;
+          transition: 0.3s;
+          border: 1px solid transparent;
+        }
+        button:last-child {
+          width: 50px;
+          font-size: 1.2rem;
+        }
+
+        button:hover {
+          background: transparent;
+          color: inherit;
+          border: 1px solid #80808090;
+        }
+      }
+    }
+  }
+}

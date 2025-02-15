@@ -10,6 +10,8 @@ import Welcome from "./pages/Welcome";
 import User from "./pages/User";
 import Update from "./pages/Update";
 import UserSkills from "./pages/UserSkills";
+import Skills from "./pages/Skills";
+import Footer from "./components/Footer";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
@@ -70,7 +72,9 @@ function App() {
           <Route path="/user/:userId" element={<User />}></Route>
           <Route path="/update/profile" element={<Update />}></Route>
           <Route path="/skills/own" element={<UserSkills />}></Route>
+          <Route path="/skills" element={<Skills />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

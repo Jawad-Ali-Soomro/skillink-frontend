@@ -94,7 +94,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
           </h1> */}
         </div>
         {!isLoggedIn ? (
-          <div className="navs flex">
+          <div className="navs flex" onClick={(e) => e.stopPropagation()}>
             <ul
               className="flex"
               style={{
@@ -103,12 +103,28 @@ const Header = ({ isLightMode, isLoggedIn }) => {
             >
               <li
                 style={{
-                  color: tab == "/" && isLightMode == true ? "black" : "white",
+                  color:
+                    tab === "/" ? (isLightMode ? "black" : "white") : "inherit",
                 }}
+                onClick={() => navigate("/")}
               >
-                {isLoggedIn ? "dashboard" : "home"}
+                {isLoggedIn ? "Dashboard" : "Home"}
               </li>
-              <li>Skills</li>
+
+              <li
+                style={{
+                  color:
+                    tab === "/skills"
+                      ? isLightMode
+                        ? "black"
+                        : "white"
+                      : "inherit",
+                }}
+                onClick={() => navigate("/skills")}
+              >
+                Skills
+              </li>
+
               <li>Contact</li>
               <li>Enterprise</li>
             </ul>
@@ -228,6 +244,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                   background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
                   color: "inherit",
                 }}
+                onClick={() => navigate("/skills")}
               >
                 <span>explore skills</span>
                 <MdOutlineExplore className="icon" />
