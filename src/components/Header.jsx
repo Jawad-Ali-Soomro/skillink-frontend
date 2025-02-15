@@ -216,6 +216,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                   background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
                   color: "inherit",
                 }}
+                onClick={() => navigate("/")}
               >
                 <span>Dashboard</span>
                 <RxDashboard className="icon" />
@@ -237,6 +238,7 @@ const Header = ({ isLightMode, isLoggedIn }) => {
                   background: isLightMode ? "#eee" : "rgba(255,255,255,.1)",
                   color: "inherit",
                 }}
+                onClick={() => navigate("/skills/own")}
               >
                 <span>my skills</span>
                 <RiProfileLine className="icon" />

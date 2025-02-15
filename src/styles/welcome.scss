@@ -21,6 +21,9 @@
         height: 300px;
         overflow: hidden;
         position: relative;
+        .icon {
+          font-size: 5rem;
+        }
         background: linear-gradient(
           45deg,
           rgba(0, 0, 0, 0.2),

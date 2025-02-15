@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -82,7 +84,7 @@ const User = () => {
             {userInfo?.website}
           </a>
         </div>
-        {userInfo?.bio?.length >= 10 ? (
+        {/* {userInfo?.bio?.length >= 10 ? (
           <div className="about flex col">
             <div className="top-card flex col">
               <h1>About {userInfo?.userName}</h1>
@@ -91,7 +93,7 @@ const User = () => {
           </div>
         ) : (
           this
-        )}
+        )} */}
       </div>
       <div className="suggested-users flex col">
         <h1>

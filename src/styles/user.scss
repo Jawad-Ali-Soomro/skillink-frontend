@@ -158,7 +158,7 @@
       }
       .btns {
         button {
-          width: 120px;
+          width: 150px;
           height: 40px;
           background: #222;
           color: white;
@@ -168,6 +168,18 @@
           font-weight: 600;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .user-info-container {
+    .user-info-main {
+      width: 100%;
+    }
+    .suggested-users {
+      max-width: 0;
+      overflow: hidden;
     }
   }
 }

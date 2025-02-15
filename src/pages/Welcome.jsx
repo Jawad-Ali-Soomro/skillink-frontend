@@ -9,9 +9,14 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { FiLink2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { FaHeartBroken } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa6";
+import { FaAngleRight, FaHeartBroken, FaReact, FaSwift } from "react-icons/fa";
+import { FaFlutter, FaHeart } from "react-icons/fa6";
 import Share from "../components/Share";
+import { TbBrandAndroid } from "react-icons/tb";
+import { SiPython } from "react-icons/si";
+import { BsInfo } from "react-icons/bs";
+import { MdDetails } from "react-icons/md";
+import { FcViewDetails } from "react-icons/fc";
 
 const Welcome = () => {
   const [suggestedUsers, setSuggestedUsers] = useState([]);
@@ -27,6 +32,20 @@ const Welcome = () => {
   };
 
   const [shareableLink, setShareAbleLink] = useState("");
+  const categories = [
+    "React Development",
+    "Android Development",
+    "Flutter Development",
+    "iOS Development",
+    "Artificial Intelligence",
+  ];
+  const categoryIcons = {
+    "React Development": <FaReact />,
+    "Android Development": <TbBrandAndroid />,
+    "Flutter Development": <FaFlutter />,
+    "iOS Development": <FaSwift />,
+    "Artificial Intelligence": <SiPython />,
+  };
 
   const getSuggested = async () => {
     const response = await axios.get(
@@ -55,7 +74,7 @@ const Welcome = () => {
       getSuggested();
       getAllPosts();
     };
-  }, [suggestedUsers]);
+  }, [suggestedUsers, window.location.pathname]);
   return (
     <div className="welcome-container flex col">
       {suggestedUsers.length >= 1 ? (
@@ -258,6 +277,31 @@ const Welcome = () => {
           onClose={() => setShowShare(false)}
         />
       )}
+
+      <div className="suggestions flex col">
+        <div className="flex text bw">
+          <h1>
+            <span>Top</span> Skills!
+          </h1>
+          <button>Explore</button>
+        </div>
+        <div className="suggestion-container flex">
+          {categories?.map((cat) => {
+            return (
+              <div className="user-card flex col" key={cat}>
+                <div className="icon flex">{categoryIcons[cat]}</div>
+                <h3>{cat}</h3>
+                <div className="btns flex">
+                  <button className="flex">Providers</button>
+                  <button className="flex">
+                    <FaAngleRight />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
