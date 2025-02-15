@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import User from "./pages/User";
+import Update from "./pages/Update";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
@@ -66,6 +67,7 @@ function App() {
         <Routes>
           <Route path="/" element={isLoggedIn ? <Welcome /> : <Home />}></Route>
           <Route path="/user/:userId" element={<User />}></Route>
+          <Route path="/update/profile" element={<Update />}></Route>
         </Routes>
       </BrowserRouter>
     </>
