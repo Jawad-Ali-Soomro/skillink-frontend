@@ -12,7 +12,7 @@ import Update from "./pages/Update";
 
 function App() {
   const isLoggedIn = window.localStorage.getItem("authToken");
-  const [isLightMode, setIsLightMode] = useState(true);
+  const [isLightMode, setIsLightMode] = useState(false);
   useEffect(() => {
     if (isLightMode) {
       document.body.classList.add("light-theme");

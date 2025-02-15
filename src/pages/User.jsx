@@ -16,15 +16,24 @@ import {
 
 const User = () => {
   const { userId } = useParams();
+  const [suggestedUsers, setSuggestedUsers] = useState([]);
+  const loggedInUser = window.localStorage.getItem("authUserId");
   const [userInfo, setUserInfo] = useState({});
   const getUserInfo = async () => {
     const response = await axios.get(`${userUrl}/find/${userId}`);
     setUserInfo(response.data.foundUser);
   };
+  const getSuggested = async () => {
+    const response = await axios.get(
+      `${userUrl}/suggest/${window.localStorage.getItem("authUserId")}`
+    );
+    setSuggestedUsers(response.data);
+  };
   useEffect(() => {
     getUserInfo();
+    getSuggested();
   }, [userId]);
-  console.log(userInfo);
+  console.log(suggestedUsers);
   return (
     <div className="user-info-container flex">
       <div className="user-info-main flex col">
@@ -73,12 +82,34 @@ const User = () => {
             {userInfo?.website}
           </a>
         </div>
-        <div className="about flex col">
-          <div className="top-card flex col">
-            <h1>Biography</h1>
+        {userInfo?.bio?.length >= 10 ? (
+          <div className="about flex col">
+            <div className="top-card flex col">
+              <h1>About {userInfo?.userName}</h1>
+            </div>
+            <p>{userInfo?.bio}</p>
           </div>
-          <p>{userInfo?.bio}</p>
-        </div>
+        ) : (
+          this
+        )}
+      </div>
+      <div className="suggested-users flex col">
+        <h1>
+          <span>Developers</span> You May Know!
+        </h1>
+        {suggestedUsers?.map((user) => {
+          return (
+            <div className="user-card flex bw" key={user?._id}>
+              <div className="left flex">
+                <img src={`http://localhost:8080/${user?.avatar}`} alt="" />
+                <p>{user?.userName}</p>
+              </div>
+              <div className="btns flex">
+                <button>Follow</button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
