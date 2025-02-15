@@ -9,7 +9,13 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { FiLink2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { FaAngleRight, FaHeartBroken, FaReact, FaSwift } from "react-icons/fa";
+import {
+  FaAngleRight,
+  FaHeartBroken,
+  FaReact,
+  FaServer,
+  FaSwift,
+} from "react-icons/fa";
 import { FaFlutter, FaHeart } from "react-icons/fa6";
 import Share from "../components/Share";
 import { TbBrandAndroid } from "react-icons/tb";
@@ -37,14 +43,14 @@ const Welcome = () => {
     "Android Development",
     "Flutter Development",
     "iOS Development",
-    "Artificial Intelligence",
+    "Backend Development",
   ];
   const categoryIcons = {
-    "React Development": <FaReact />,
-    "Android Development": <TbBrandAndroid />,
-    "Flutter Development": <FaFlutter />,
-    "iOS Development": <FaSwift />,
-    "Artificial Intelligence": <SiPython />,
+    "React Development": <FaReact color="#61DAFB" />,
+    "Android Development": <TbBrandAndroid color="#3DDC84" />,
+    "Flutter Development": <FaFlutter color="#02569B" />,
+    "iOS Development": <FaSwift color="#FA7343" />,
+    "Backend Development": <FaServer color="#6D28D9" />, // Purple
   };
 
   const getSuggested = async () => {
@@ -283,7 +289,7 @@ const Welcome = () => {
           <h1>
             <span>Top</span> Skills!
           </h1>
-          <button>Explore</button>
+          <button onClick={() => navigate("/skills")}>Explore</button>
         </div>
         <div className="suggestion-container flex">
           {categories?.map((cat) => {
